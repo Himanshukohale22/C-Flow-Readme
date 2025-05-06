@@ -1,5 +1,4 @@
-'''
-
+```
 /* 
 
 // e = decimal after four digit
@@ -44,6 +43,4 @@ using pointer
 
 
 */
-
-
-'''
+```
