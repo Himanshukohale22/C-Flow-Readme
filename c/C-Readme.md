@@ -607,13 +607,47 @@ Each variable in the structure is known as a member of the structure.
 Unlike an array, a structure can contain many different data types (int, float, char, etc.)
 
 
+// Create a structure called myStructure
 struct myStructure {
   int myNum;
   char myLetter;
 };
 
 int main() {
+  // Create a structure variable of myStructure called s1
   struct myStructure s1;
+
+  // Assign values to members of s1
+  s1.myNum = 13;
+  s1.myLetter = 'B';
+
+  // Print values
+  printf("My number: %d\n", s1.myNum);
+  printf("My letter: %c\n", s1.myLetter);
+
+  return 0;
+} 
+
+
+
+string doest not act same as other variables in struct it need some special treatment
+strcpy
+
+struct myStructure {
+  int myNum;
+  char myLetter;
+  char myString[30]; // String
+};
+
+int main() {
+  struct myStructure s1;
+
+  // Assign a value to the string using the strcpy function
+  strcpy(s1.myString, "Some text");
+
+  // Print the value
+  printf("My string: %s", s1.myString);
+
   return 0;
 } 
 
@@ -622,6 +656,24 @@ int main() {
 # Enums in C
 
 ```
+An enum is a special type that represents a group of constants (unchangeable values).
+Enum is short for "enumerations", which means "specifically listed".
+
+enum Level {
+  LOW,
+  MEDIUM,
+  HIGH
+};
+  
+int main() {
+  // Create an enum variable and assign a value to it
+  enum Level myVar = MEDIUM;
+ 
+  // Print the enum variable
+  printf("%d", myVar);
+  
+  return 0;
+}
 
 ```
 
