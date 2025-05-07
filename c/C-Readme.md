@@ -45,13 +45,16 @@ using pointer
 
 To get the right result, you need to know how type conversion works.
 There are two types of conversion in C:
-Sometimes, you have to convert the value of one data type to another type. This is known as type conversion.
+Sometimes, you have to convert the value of one data type to another type.
+This is known as type conversion.
 
-    Implicit Conversion (automatically) - Implicit conversion is done automatically by the compiler when you assign a value of one type to another.
-    Explicit Conversion (manually) -    Explicit conversion is done manually by placing the type in parentheses () in front of the value.
+Implicit Conversion (automatically) - Implicit conversion is done automatically by the compiler when you assign a value of one type to another.
+Explicit Conversion (manually) -    Explicit conversion is done manually by placing the type in parentheses () in front of the value.
 
 
-Constant :- If you don't want others (or yourself) to change existing variable values, you can use the const keyword.
+Constant :- If you don't want others (or yourself) to change existing variable values, 
+            you can use the const keyword.
+
 const int myNum = 15; // this variable will not be changed 
 
 C-Operators :- Operators are used to perform operations on variables and values.
@@ -296,7 +299,8 @@ for (i = 1; i <= 2; ++i) {
 ## Break-continue
 ### Break-continue for for-loop
 ```
-Break: You have already seen the break statement used in an earlier chapter of this tutorial. It was used to "jump out" of a switch statement.
+Break: You have already seen the break statement used in an earlier chapter of this tutorial. 
+It was used to "jump out" of a switch statement.
 The break statement can also be used to jump out of a loop.
 
 eg1:
@@ -310,7 +314,8 @@ for (i = 0; i < 10; i++) {
 }
 output: 0 1 2 3
 
-continue: The continue statement breaks one iteration (in the loop), if a specified condition occurs, and continues with the next iteration in the loop.
+continue: The continue statement breaks one iteration (in the loop), 
+if a specified condition occurs, and continues with the next iteration in the loop.
 
 int i;
 
@@ -356,5 +361,273 @@ while (i < 10) {
 # arrays
 
 ```
+ int myNumbers[] = {25, 50, 75, 100};
+
+ 2D array (Multidimentional array)
+
+ int matrix[][] = {{1, 4, 2},{3, 6, 8}};
+
 
 ```
+
+# String
+
+```
+Strings are used for storing text/characters.
+Unlike many other programming languages, C does not have a String type to easily create string variables.
+Instead, you must use the char type and create an array of characters to make a string in C:
+
+char greetings[] = "Hello World!";
+printf("%s", greetings);
+
+In the examples above, we used a "string literal" to create a string variable. 
+This is the easiest way to create a string in C.
+You should also note that you can create a string with a set of characters.
+This example will produce the same result as the example in the beginning of this page:
+
+char greetings[] = {'H', 'e', 'l', 'l', 'o', ' ', 'W', 'o', 'r', 'l', 'd', '!', '\0'};
+printf("%s", greetings);
+
+Strings - Special Characters
+\' 	' 	Single quote
+\" 	" 	Double quote
+\\ 	\ 	Backslash
+
+\n 	New Line 	
+\t 	Tab 	
+\0 	Null
+
+ #include <string.h>
+ strlen()
+
+ In the Strings chapter, we used sizeof to get the size of a string/array. 
+ Note that sizeof and strlen behaves differently, as sizeof also includes the \0 character when counting:
+
+Concatenate Strings
+
+char str1[20] = "Hello ";
+char str2[] = "World!";
+
+// Concatenate str2 to str1 (result is stored in str1)
+strcat(str1, str2);
+
+// Print str1
+printf("%s", str1);
+
+Copy Strings
+
+char str1[20] = "Hello World!";
+char str2[20];
+
+// Copy str1 to str2
+strcpy(str2, str1);
+
+// Print str2
+printf("%s", str2);
+
+Compare Strings
+
+char str1[] = "Hello";
+char str2[] = "Hello";
+char str3[] = "Hi";
+
+// Compare str1 and str2, and print the result
+printf("%d\n", strcmp(str1, str2));  // Returns 0 (the strings are equal)
+
+// Compare str1 and str3, and print the result
+printf("%d\n", strcmp(str1, str3));  // Returns -4 (the strings are not equal)
+
+
+
+```
+
+# C User Input
+
+```
+You have already learned that printf() is used to output values in C.
+
+To get user input, you can use the scanf() function:
+```
+
+# C Memory Address
+
+```
+When a variable is created in C, a memory address is assigned to the variable.
+The memory address is the location of where the variable is stored on the computer.
+When we assign a value to the variable, it is stored in this memory address.
+To access it, use the reference operator (&), and the result represents where the variable is stored:
+
+int myAge = 43;
+printf("%p", &myAge); // Outputs 0x7ffe5367e044
+
+You should also note that &myAge is often called a "pointer". 
+A pointer basically stores the memory address of a variable as its value. 
+To print pointer values, we use the %p format specifier.
+
+
+```
+
+# C pointers
+
+```
+we can get the memory address of a variable with the reference operator &
+
+A pointer is a variable that stores the memory address of another variable as its value. 
+
+int myAge = 43;     // An int variable
+int* ptr = &myAge;  // A pointer variable, with the name ptr, that stores the address of myAge
+
+
+
+// Output the value of myAge (43)
+printf("%d\n", myAge);
+
+// Output the memory address of myAge (0x7ffe5367e044)
+printf("%p\n", &myAge);
+
+// Output the memory address of myAge with the pointer (0x7ffe5367e044)
+printf("%p\n", ptr);
+
+Create a pointer variable with the name ptr, that points to an int variable (myAge). 
+Note that the type of the pointer has to match the type of the variable you're working with (int in our example).
+Use the & operator to store the memory address of the myAge variable, and assign it to the pointer.
+Now, ptr holds the value of myAge's memory address.
+
+
+Dereference:-
+In the example above, we used the pointer variable to get the memory address of a variable 
+(used together with the & reference operator).
+You can also get the value of the variable the pointer points to, by using the * operator (the dereference operator):
+
+
+int myAge = 43;     // Variable declaration
+int* ptr = &myAge;  // Pointer declaration
+
+// Reference: Output the memory address of myAge with the pointer (0x7ffe5367e044)
+printf("%p\n", ptr);
+
+// Dereference: Output the value of myAge with the pointer (43)
+printf("%d\n", *ptr);
+
+
+Good To Know: There are two ways to declare pointer variables in C:
+int* myNum;
+int *myNum;
+
+
+```
+
+# C Pointers and Arrays
+
+```
+int myNumbers[4] = {25, 50, 75, 100};
+int i;
+
+for (i = 0; i < 4; i++) {
+  printf("%d\n", myNumbers[i]);   // will give the numbers
+  printf("%p\n", &myNumbers[i]);  // address 
+
+}
+
+
+int myNumbers[4] = {25, 50, 75, 100};
+
+// Get the memory address of the myNumbers array
+printf("%p\n", myNumbers);
+
+// Get the memory address of the first array element
+printf("%p\n", &myNumbers[0]);
+
+
+ Since myNumbers is a pointer to the first element in myNumbers, you can use the * operator to access it:
+
+int myNumbers[4] = {25, 50, 75, 100};
+
+// Get the value of the first element in myNumbers
+printf("%d", *myNumbers);
+```
+
+# function in C
+
+```
+A function consist of two parts:
+
+    Declaration: the function's name, return type, and parameters (if any)
+    Definition: the body of the function (code to be executed)
+void myFunction() { // declaration
+  // the body of the function (definition)
+}
+
+s
+parameters and arguments
+
+when we set any vaiable in function it's parameter 
+when we call function with set variable it's argument
+
+void MyFunction(char name[]){
+  printf("%c\n",name);
+}
+
+int main(){
+  MyFunction(Himanshu);
+  return 0;
+}
+
+Variable scope 
+  * local variable
+  * global variable
+
+
+Recursion in C
+
+Recursion is the technique of making a function call itself. 
+This technique provides a way to break complicated problems 
+down into simple problems which are easier to solve.
+
+
+```
+
+### note basic : -
+
+The void keyword, used in the previous examples, indicates that the function should not return a value. 
+If you want the function to return a value, you can use a data type (such as int or float, etc.) instead of void, 
+and use the return keyword inside the function:
+
+# Files in c
+
+```
+
+
+```
+# Structure in C 
+
+```
+Structures (also called structs) are a way to group several related variables into one place. 
+Each variable in the structure is known as a member of the structure.
+Unlike an array, a structure can contain many different data types (int, float, char, etc.)
+
+
+struct myStructure {
+  int myNum;
+  char myLetter;
+};
+
+int main() {
+  struct myStructure s1;
+  return 0;
+} 
+
+```
+
+# Enums in C
+
+```
+
+```
+
+# C Memory
+
+```
+
+```
+
